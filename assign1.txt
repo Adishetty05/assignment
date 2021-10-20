@@ -1,0 +1,155 @@
+1)select ename
+  from emp
+  where job='clerk';
+
+2)select ename
+  from emp
+  where job IN('clerk','manager');
+
+3)select getdate() AS currentdate
+ from emp;
+
+4)select ename
+  from emp
+ where sal BETWEEN 500 AND 1000;
+
+5)select ename,hiredate
+  from emp
+  where month(hiredate)=12;
+
+6)select ename
+  from emp
+  where sal NOT BETWEEN 1000 AND 2500;
+
+7)select ename,sal
+  from emp
+  where sal IN(800,950,3000,5000);
+
+8)select ename,sal
+  from emp
+  where ename LIKE'_L%';
+
+9)select ename
+  from emp
+  where ename LIKE'%D';
+
+10)select ename
+   from emp
+   where ename like'_____';
+
+11)select ename
+   from emp
+   where ename like'T%R';
+
+12)select ename
+   from emp
+   where ename like'%A%';
+
+
+13)select ename,hiredate,datepart(DD,hiredate) AS 'joineddate'
+   from emp
+   where datepart(DD,hiredate)<19;
+
+14)select ename,empno
+   from emp
+   where ename='james';
+
+15)select ename,sal
+   from emp
+   where ename='king';
+
+16)select ename,job
+   from emp
+   where job='president';
+
+17)select *
+  from emp
+  where job='manager';
+
+18)select *
+   from emp
+   where comm IS NOT NULL;
+
+19)select ename
+   from emp
+   where hiredate<('1-apr-81');
+
+20)select ename,sal
+   from emp 
+   where ename IN('king','blake','ford','smith');
+
+21)select ename
+   from emp
+   where sal<3500;
+
+22)select *
+   from emp
+   where job='clerk';
+
+23)select ename,sal,sal*12 AS 'annual salary'
+   from emp;
+
+24)Select ename,sal,sal*12*0.2 AS 'annual salary'
+   from emp
+   where ename='ford';
+
+25)select E.deptno,SUM(sal) AS 'total salary'
+   from emp E,dept D
+   where E.deptno=D.deptno
+   group by E.deptno;
+
+26)select ename
+   from emp
+   where sal = ALL 
+               (select min(sal) as 'lowest salary'
+			   from emp);
+
+27)select ename,avg(sal) as 'average salary'
+   from emp
+   where job='manager'
+   group by ename;
+
+28)select ename,sum(sal) as 'total salary'
+   from emp
+   where job='salesman'
+   group by ename;
+
+29)select deptno,avg(sal) as 'average salary'
+   from emp
+   group by deptno
+   having avg(sal)<(select avg(sal) from emp);
+
+30)select deptno,count(*) as totalemp
+   from emp
+   group by deptno;
+
+31)select ename,sal,deptno
+   from emp
+   where sal IN(select max(sal) as'highest sal' from emp where job like 'analyst');
+
+32)SELECT ename,max(comm) as 'highest commission'
+   from emp
+   where comm is not NULL
+   group by ename;
+
+33)select count(deptno) as 'dept count'
+   from dept;
+
+34)select ename
+   from emp
+   where ename LIKE'___L%';
+
+
+			   
+
+
+
+
+
+
+
+
+
+
+
+
