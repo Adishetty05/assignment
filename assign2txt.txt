@@ -1,0 +1,117 @@
+1)select deptno,dname
+from dept d
+where deptno not in 
+                      (select deptno
+		       from emp );
+
+2)select ename , job 
+from emp 
+where mgr is null;
+
+3)select E.ename,E.comm,E.job,D.loc,D.dname
+from emp E, dept D
+where E.comm>1000 and D.loc='new york';
+
+4)select count(ename) AS 'NO. OF EMPLOYEES'
+from dept D,emp E
+where E.deptno=D.DEPTNO AND loc='chicago';
+
+
+5)select E.ename,D.loc
+from emp E,dept D
+WHERE E.deptno=D.deptno AND loc like '%chicago%';
+
+
+
+6)select E.ename,D.loc
+from emp E,dept D
+WHERE E.deptno=D.deptno 
+order by loc;
+
+7)select count(deptno)
+from dept
+union
+select count(ename) 
+from emp;
+
+8)SELECT E.ename
+FROM emp E
+WHERE E.MGR = E.EMPNO
+  AND E.hiredate < E.hiredate;
+
+9)select count(job) as 'no. of managers'
+from emp 
+where job='manager';
+
+10)SELECT Empno, Ename, job 
+FROM Emp
+WHERE MGR is null;
+
+11)select ename,deptno
+from emp
+where ename='smith';
+
+12)select E.ename , E.job ,D.loc
+from emp E, dept D
+where E.deptno=D.DEPTNO AND E.job='salesman' and D.loc not like 'boston' ;
+
+
+13)select E.*,D.loc
+from emp E,dept D
+WHERE E.deptno=D.deptno 
+order by loc;
+
+14)select ename
+from emp
+where job like '%MAN%' AND sal <
+                                 (select sal
+			                      from emp
+			                      where ename='miller');
+
+15)select E.*,D.loc
+from emp E,dept D
+WHERE E.deptno=D.deptno AND LOC LIKE 'CHICAGO';
+
+16)select ename
+from emp
+where sal > ALL
+                  (select min(sal)
+	            from emp
+	            where job='manager
+                    group by ename);
+
+17)select E.ename,E.empno
+from emp E
+JOIN DEPT D
+ON (E.deptno=D.DEPTNO)AND DNAME='ACCOUNTING';
+
+18)select ename
+from emp
+where job='manager';
+
+19)select dname,
+case 
+          when dname='accounting' then 'not sales'
+		  when dname='research' then 'not sales'
+		  when dname='operations' then 'not sales'
+		  else 'sales'
+		 end as 'DESCRIPTION' 
+from dept;
+
+20)select sal, ename,
+case 
+          when sal>1000 then sal
+		  else '1000'
+		  end as 'description'
+          from emp;
+
+21)select sal,ename,
+case  
+       when sal<1000 then 'low'
+	   when sal between 1000 and 2500 then 'medium'
+	   when sal>2500 then 'high'
+	   end as 'RANGE'
+	   from emp;
+
+
+
